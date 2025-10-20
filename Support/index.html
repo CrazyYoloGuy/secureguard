@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center - SecurityGuard</title>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Get help with SecurityGuard - Contact support, browse documentation, join our Discord community">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/logo.png" alt="SecurityGuard Logo" class="brand-icon">
+                <span class="brand-text">SecurityGuard</span>
+                <span class="brand-badge">PRO</span>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="../SecurityLandingPage/index.html" class="btn btn-ghost">Home</a>
+                <button class="btn btn-primary" onclick="loginWithDiscord()">
+                    <span>Dashboard</span>
+                    <svg viewBox="0 0 24 24" class="btn-icon">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-gradient"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-badge">
+                <svg class="badge-icon" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                </svg>
+                <span>We're here to help</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">How can we</span>
+                <span class="title-highlight">help you today?</span>
+            </h1>
+            
+            <p class="hero-description">
+                Get instant support, browse our documentation, or connect with our community
+            </p>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="2"/>
+                    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search for help articles, guides, or FAQs..." id="searchInput">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="contact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-description">Choose the best way to reach us</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Discord Support -->
+                <div class="contact-card discord-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37.07.07 0 0 0 3.648 4.4c-3.123 4.667-3.975 9.22-3.55 13.713a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.033.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.032.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Discord Community</h3>
+                    <p class="card-description">Join our Discord server for instant help from our community and support team</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-value">5,000+</span>
+                            <span class="stat-label">Members</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">&lt;5min</span>
+                            <span class="stat-label">Avg Response</span>
+                        </div>
+                    </div>
+                    <a href="https://discord.gg/your-invite" class="card-btn discord-btn" target="_blank">
+                        <span>Join Discord</span>
+                        <svg viewBox="0 0 24 24" class="btn-arrow">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Email Support -->
+                <div class="contact-card email-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Email Support</h3>
+                    <p class="card-description">Send us an email and we'll get back to you within 24 hours</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-value">&lt;24h</span>
+                            <span class="stat-label">Response Time</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">24/7</span>
+                            <span class="stat-label">Available</span>
+                        </div>
+                    </div>
+                    <a href="mailto:support@securityguard.com" class="card-btn email-btn">
+                        <span>Send Email</span>
+                        <svg viewBox="0 0 24 24" class="btn-arrow">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Documentation -->
+                <div class="contact-card docs-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Documentation</h3>
+                    <p class="card-description">Browse our comprehensive guides, tutorials, and API documentation</p>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <span class="stat-value">100+</span>
+                            <span class="stat-label">Articles</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">50+</span>
+                            <span class="stat-label">Guides</span>
+                        </div>
+                    </div>
+                    <a href="#" class="card-btn docs-btn">
+                        <span>View Docs</span>
+                        <svg viewBox="0 0 24 24" class="btn-arrow">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Quick Links</h2>
+                <p class="section-description">Find what you need faster</p>
+            </div>
+
+            <div class="quick-links-grid">
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">Getting Started</h3>
+                        <p class="quick-link-description">Learn the basics</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke="currentColor" fill="none" stroke-width="2"/>
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">Configuration</h3>
+                        <p class="quick-link-description">Setup your bot</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">Security Features</h3>
+                        <p class="quick-link-description">Protect your server</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">Analytics</h3>
+                        <p class="quick-link-description">View your stats</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">FAQ</h3>
+                        <p class="quick-link-description">Common questions</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-link-content">
+                        <h3 class="quick-link-title">API Reference</h3>
+                        <p class="quick-link-description">Developer docs</p>
+                    </div>
+                    <svg class="quick-link-arrow" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Quick answers to common questions</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I add SecurityGuard to my Discord server?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simply click the "Login with Discord" button, select your server from the list, and authorize the bot. SecurityGuard will be added instantly with default security settings enabled.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is SecurityGuard free to use?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! SecurityGuard offers a free tier with essential security features. Premium plans are available for advanced features, analytics, and priority support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What permissions does SecurityGuard need?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SecurityGuard requires permissions to manage messages, kick/ban members, and view audit logs to effectively protect your server. We only request the minimum permissions needed for security features.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I configure security settings?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Access your server dashboard, navigate to the Features section, and customize each security module according to your needs. Changes take effect immediately.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I get help setting up SecurityGuard?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! Join our Discord community for live support, check our documentation for detailed guides, or email us at support@securityguard.com for personalized assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../assets/logo.png" alt="SecurityGuard Logo" class="footer-logo">
+                    <span class="footer-brand-text">SecurityGuard</span>
+                </div>
+                <p class="footer-description">
+                    Elite Discord security platform trusted by thousands of communities worldwide.
+                </p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 SecurityGuard. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" title="Twitter">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="Discord">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37.07.07 0 0 0 3.648 4.4c-3.123 4.667-3.975 9.22-3.55 13.713a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.033.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.032.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

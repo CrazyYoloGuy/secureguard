@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Servers - SecurityGuard</title>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Manage your Discord servers with SecurityGuard - View and configure security settings for all your servers">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/logo.png" alt="SecurityGuard Logo" class="brand-icon">
+                <span class="brand-text">SecurityGuard</span>
+                <span class="brand-badge">PRO</span>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <img class="user-avatar" id="userAvatar" src="" alt="User Avatar">
+                    <span class="user-name" id="userName"></span>
+                </div>
+                <button class="logout-btn" onclick="logout()" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16,17 21,12 16,7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Loading State -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <h2 class="loading-title">Loading Your Servers</h2>
+            <p class="loading-description">Fetching your Discord servers and checking permissions...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-container" id="errorContainer" style="display: none;">
+            <div class="error-icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                    <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                    <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <h2 class="error-title">Authentication Error</h2>
+            <p class="error-description" id="errorDescription">There was an issue accessing your Discord account.</p>
+            <button class="btn btn-primary" onclick="redirectToLogin()">
+                <span>Login Again</span>
+                <svg viewBox="0 0 24 24" class="btn-icon">
+                    <path d="M13 7l5 5-5 5M6 12h12" stroke="currentColor" fill="none" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Servers Content -->
+        <div class="servers-container" id="serversContainer" style="display: none;">
+            <div class="servers-header">
+                <div class="header-content">
+                    <h1 class="page-title">My Discord Servers</h1>
+                    <p class="page-description">Manage security settings for servers where you have administrator permissions</p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-input-container">
+                    <svg class="search-icon" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search servers..." id="serverSearch">
+                </div>
+            </div>
+
+            <!-- Servers Grid -->
+            <div class="servers-grid" id="serversGrid">
+                <!-- Server cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37.07.07 0 0 0 3.648 4.4c-3.123 4.667-3.975 9.22-3.55 13.713a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.033.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.032.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.30z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3 class="empty-title">No Servers Found</h3>
+                <p class="empty-description">You don't have administrator permissions on any Discord servers, or there was an issue loading your servers.</p>
+                <button class="btn btn-outline" onclick="refreshServers()">
+                    <span>Refresh</span>
+                    <svg viewBox="0 0 24 24" class="btn-icon">
+                        <polyline points="23 4 23 10 17 10" stroke="currentColor" fill="none" stroke-width="2"/>
+                        <polyline points="1 20 1 14 7 14" stroke="currentColor" fill="none" stroke-width="2"/>
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

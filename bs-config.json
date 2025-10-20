@@ -1,0 +1,6 @@
+{
+  "port": 3000,
+  "startPath": "/SecurityLandingPage/index.html",
+  "server": { "baseDir": "./" },
+  "files": ["./**/*.{html,htm,css,js}"]
+}

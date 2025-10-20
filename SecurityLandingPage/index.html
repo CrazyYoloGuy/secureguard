@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurityGuard - Elite Discord Security Platform</title>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Elite Discord security platform with AI-powered threat detection and enterprise-grade protection">
+</head>
+<body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/logo.png" alt="SecurityGuard Logo" class="brand-icon">
+                <span class="brand-text">SecurityGuard</span>
+                <span class="brand-badge">PRO</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                <li><a href="#analytics" class="nav-link">Analytics</a></li>
+                <li><a href="#enterprise" class="nav-link">Enterprise</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-ghost">Documentation</button>
+                <button class="btn btn-primary" onclick="loginWithDiscord()">
+                    <span>Login with Discord</span>
+                    <svg viewBox="0 0 71 55" class="btn-icon" fill="none">
+                        <g clip-path="url(#clip0)">
+                            <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="71" height="55" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-gradient"></div>
+            <div class="floating-particles"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Trusted by 50,000+ Discord servers</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">The Future of</span>
+                    <span class="title-highlight">Discord Security</span>
+                    <span class="title-line">is Here</span>
+                </h1>
+                
+                <p class="hero-description">
+                    AI-powered threat detection, real-time protection, and enterprise-grade security 
+                    tools designed for the modern Discord community. Protect what matters most.
+                </p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="loginWithDiscord()">
+                        <span>Login with Discord</span>
+                        <svg viewBox="0 0 71 55" class="btn-icon" fill="none">
+                            <g clip-path="url(#clip1)">
+                                <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip1">
+                                    <rect width="71" height="55" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <button class="btn btn-glass btn-large" onclick="window.location.href='/MyServers/index.html?demo=true'">
+                        <svg viewBox="0 0 24 24" class="btn-icon">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                        </svg>
+                        <span>Try Demo</span>
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Threat Detection</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">&lt;100ms</span>
+                        <span class="stat-label">Response Time</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Active Monitoring</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="security-interface">
+                    <div class="interface-glow"></div>
+                    
+                    <!-- Main Security Monitor -->
+                    <div class="security-monitor">
+                        <div class="monitor-header">
+                            <div class="status-indicator live">
+                                <span class="pulse-dot"></span>
+                                <span>LIVE MONITORING</span>
+                            </div>
+                            <div class="threat-level">
+                                <span class="level-text">THREAT LEVEL</span>
+                                <span class="level-value low">LOW</span>
+                            </div>
+                        </div>
+                        
+                        <div class="monitor-content">
+                            <!-- Central Security Radar -->
+                            <div class="security-radar">
+                                <div class="radar-grid">
+                                    <div class="radar-ring ring-1"></div>
+                                    <div class="radar-ring ring-2"></div>
+                                    <div class="radar-ring ring-3"></div>
+                                    <div class="radar-sweep"></div>
+                                </div>
+                                <div class="radar-center">
+                                    <div class="shield-icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="threat-dots">
+                                    <div class="threat-dot blocked" style="top: 25%; left: 70%;"></div>
+                                    <div class="threat-dot monitored" style="top: 60%; left: 30%;"></div>
+                                    <div class="threat-dot analyzing" style="top: 40%; left: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Side Stats Panel -->
+                    <div class="stats-panel">
+                        <div class="stat-group">
+                            <div class="stat-item">
+                                <div class="stat-icon threat-blocked">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">1,247</span>
+                                    <span class="stat-label">Threats Blocked</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-icon servers-protected">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M9,12L11,14L15,10" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">50,000+</span>
+                                    <span class="stat-label">Servers Protected</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-icon response-time">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                                        <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">&lt;100ms</span>
+                                    <span class="stat-label">Response Time</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Live Activity Feed -->
+                        <div class="activity-feed">
+                            <div class="feed-header">
+                                <span>Live Activity</span>
+                                <div class="feed-status active"></div>
+                            </div>
+                            <div class="feed-items">
+                                <div class="feed-item">
+                                    <div class="feed-dot success"></div>
+                                    <div class="feed-content">
+                                        <span class="feed-action">Raid attempt blocked</span>
+                                        <span class="feed-time">2m ago</span>
+                                    </div>
+                                </div>
+                                <div class="feed-item">
+                                    <div class="feed-dot warning"></div>
+                                    <div class="feed-content">
+                                        <span class="feed-action">Spam pattern detected</span>
+                                        <span class="feed-time">5m ago</span>
+                                    </div>
+                                </div>
+                                <div class="feed-item">
+                                    <div class="feed-dot info"></div>
+                                    <div class="feed-content">
+                                        <span class="feed-action">User verification completed</span>
+                                        <span class="feed-time">8m ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>Advanced Protection</span>
+                </div>
+                <h2 class="section-title">
+                    Enterprise-Grade Security
+                    <span class="title-highlight">Features</span>
+                </h2>
+                <p class="section-description">
+                    Cutting-edge technology meets intuitive design. Every feature is crafted 
+                    to provide maximum protection with minimal configuration.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card featured">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L3 7V17C3 20.31 5.69 23 9 23H15C18.31 23 21 20.31 21 17V7L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI Threat Detection</h3>
+                    <p class="feature-description">
+                        Machine learning algorithms analyze patterns in real-time to identify 
+                        and neutralize threats before they impact your community.
+                    </p>
+                    <div class="feature-metrics">
+                        <div class="metric">
+                            <span class="metric-number">99.9%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-number">&lt;50ms</span>
+                            <span class="metric-label">Detection</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Real-time Monitoring</h3>
+                    <p class="feature-description">
+                        24/7 surveillance with instant alerts and automated response systems 
+                        to maintain server integrity around the clock.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 12L11 14L15 10" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M21 12C21 16.97 16.97 21 12 21S3 16.97 3 12S7.03 3 12 3S21 7.03 21 12Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Smart Verification</h3>
+                    <p class="feature-description">
+                        Multi-layer verification system with biometric-like behavioral analysis 
+                        to ensure only legitimate users gain access.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Auto-Response</h3>
+                    <p class="feature-description">
+                        Intelligent automated actions that adapt to threat levels and 
+                        server context for optimal protection without false positives.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8L14 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Detailed Analytics</h3>
+                    <p class="feature-description">
+                        Comprehensive reporting and insights with predictive analytics 
+                        to help you stay ahead of emerging threats.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M23 21V19C23 16.79 21.21 15 19 15C18.12 15 17.31 15.3 16.67 15.81" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Team Management</h3>
+                    <p class="feature-description">
+                        Advanced role-based access controls and team collaboration tools 
+                        for seamless security management across your organization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Section -->
+    <section id="enterprise" class="enterprise">
+        <div class="section-container">
+            <div class="enterprise-content">
+                <div class="enterprise-info">
+                    <div class="section-badge">
+                        <span>Enterprise Ready</span>
+                    </div>
+                    <h2 class="section-title">
+                        Built for Scale,
+                        <span class="title-highlight">Designed for Trust</span>
+                    </h2>
+                    <p class="section-description">
+                        From small communities to massive organizations, SecurityGuard scales 
+                        seamlessly while maintaining the highest security standards.
+                    </p>
+                    
+                    <div class="enterprise-features">
+                        <div class="enterprise-feature">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>SOC 2 Type II Compliant</h4>
+                                <p>Enterprise-grade security controls and auditing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="enterprise-feature">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>99.99% SLA Guarantee</h4>
+                                <p>Mission-critical uptime with redundant infrastructure</p>
+                            </div>
+                        </div>
+                        
+                        <div class="enterprise-feature">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>24/7 Dedicated Support</h4>
+                                <p>Direct access to security experts and priority response</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="enterprise-actions">
+                        <button class="btn btn-primary btn-large">
+                            <span>Schedule Demo</span>
+                            <svg viewBox="0 0 24 24" class="btn-icon">
+                                <path d="M13 7l5 5-5 5M6 12h12" stroke="currentColor" fill="none" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="btn btn-outline btn-large">
+                            <span>Contact Sales</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="enterprise-visual">
+                    <div class="security-dashboard">
+                        <div class="dashboard-header">
+                            <div class="header-title">Enterprise Security Center</div>
+                            <div class="header-status">
+                                <span class="status-indicator active"></span>
+                                <span>All Systems Operational</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <span class="card-title">Global Threat Map</span>
+                                    <span class="card-value">Real-time</span>
+                                </div>
+                                <div class="threat-map">
+                                    <div class="map-point point-1"></div>
+                                    <div class="map-point point-2"></div>
+                                    <div class="map-point point-3"></div>
+                                </div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <span class="card-title">Protection Level</span>
+                                    <span class="card-value">Maximum</span>
+                                </div>
+                                <div class="protection-gauge">
+                                    <div class="gauge-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg">
+            <div class="cta-gradient"></div>
+            <div class="cta-pattern"></div>
+        </div>
+        <div class="section-container">
+            <div class="cta-content">
+                <h2 class="cta-title">
+                    Ready to Secure Your
+                    <span class="title-highlight">Discord Community?</span>
+                </h2>
+                <p class="cta-description">
+                    Join thousands of server owners who trust SecurityGuard to protect 
+                    their communities. Start your free trial today.
+                </p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary btn-large" onclick="loginWithDiscord()">
+                        <span>Login with Discord</span>
+                        <svg viewBox="0 0 71 55" class="btn-icon" fill="none">
+                            <g clip-path="url(#clip2)">
+                                <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip2">
+                                    <rect width="71" height="55" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <div class="cta-note">
+                        <span>Free to use • Secure Discord OAuth • No data stored</span>
+                    </div>
+                </div>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" class="trust-icon">
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" fill="none" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                        <span>SOC 2 Certified</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" class="trust-icon">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" fill="none" stroke-width="2"/>
+                            <circle cx="12" cy="16" r="1" stroke="currentColor" fill="none" stroke-width="2"/>
+                            <path d="M7 11V7A5 5 0 0 1 17 7V11" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                        <span>End-to-End Encrypted</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" class="trust-icon">
+                            <path d="M12 2L3 7V17C3 20.31 5.69 23 9 23H15C18.31 23 21 20.31 21 17V7L12 2Z" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                        <span>99.99% Uptime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 32 32" class="brand-svg">
+                            <defs>
+                                <linearGradient id="footerBrandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00E5FF"/>
+                                    <stop offset="100%" style="stop-color:#00B7EB"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M16,2 L2,7 L2,23 L16,30 L30,23 L30,7 L16,2 Z M16,5 L26,9 L26,21 L16,27 L6,21 L6,9 L16,5 Z" fill="url(#footerBrandGradient)"/>
+                            <circle cx="16" cy="16" r="6" fill="url(#footerBrandGradient)" opacity="0.3"/>
+                            <circle cx="16" cy="16" r="3" fill="#FFFFFF"/>
+                        </svg>
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-text">SecurityGuard</span>
+                        <p class="brand-tagline">Elite Discord Security Platform</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="column-title">Product</h4>
+                        <ul class="column-links">
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Enterprise</a></li>
+                            <li><a href="#">API</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="column-title">Resources</h4>
+                        <ul class="column-links">
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Status</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="column-title">Company</h4>
+                        <ul class="column-links">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="column-title">Legal</h4>
+                        <ul class="column-links">
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Security</a></li>
+                            <li><a href="#">Compliance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 SecurityGuard. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37.07.07 0 0 0 3.648 4.4c-3.123 4.667-3.975 9.22-3.55 13.713a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.033.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.032.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

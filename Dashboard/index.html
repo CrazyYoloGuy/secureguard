@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Dashboard - SecurityGuard</title>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Professional Discord server security dashboard - Monitor, configure, and manage your server's security settings">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="../assets/logo.png" alt="SecurityGuard Logo" class="brand-icon">
+                <span class="brand-text">SecurityGuard</span>
+                <span class="brand-badge">PRO</span>
+            </div>
+            <div class="nav-actions">
+                <!-- User Profile Dropdown -->
+                <div class="user-dropdown">
+                    <button class="user-dropdown-trigger" id="userDropdownTrigger">
+                        <img class="user-avatar" id="navUserAvatar" src="" alt="User">
+                        <span class="user-name" id="navUserName">Loading...</span>
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="user-dropdown-menu" id="userDropdownMenu">
+                        <a href="#" class="dropdown-item" onclick="goBackToServers(); return false;">
+                            <svg viewBox="0 0 24 24" class="dropdown-icon">
+                                <path d="M3 12h18M3 12l6-6M3 12l6 6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Back to Servers</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" onclick="logout(); return false;">
+                            <svg viewBox="0 0 24 24" class="dropdown-icon">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-main">
+        <!-- Sidebar Navigation - Redesigned -->
+        <aside class="dashboard-sidebar">
+            <!-- Server Selector Dropdown -->
+            <div class="sidebar-header">
+                <div class="server-selector">
+                    <button class="server-selector-trigger" id="serverSelectorTrigger">
+                        <div class="server-selector-avatar">
+                            <img class="server-selector-image" id="sidebarServerSelectorImage" src="" alt="Server" style="display: none;">
+                            <div class="server-selector-fallback" id="sidebarServerSelectorFallback">
+                                <span id="sidebarServerSelectorInitials">SV</span>
+                            </div>
+                        </div>
+                        <div class="server-selector-info">
+                            <span class="server-selector-name" id="sidebarServerSelectorName">Loading...</span>
+                        </div>
+                        <svg class="server-selector-arrow" viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="server-selector-menu" id="serverSelectorMenu">
+                        <div class="server-selector-menu-header">Your Servers</div>
+                        <div class="server-selector-list" id="serverSelectorList">
+                            <!-- Server list will be populated by JavaScript -->
+                            <div class="server-selector-loading">Loading servers...</div>
+                        </div>
+                        <div class="server-selector-divider"></div>
+                        <a href="/MyServers/index.html" class="server-selector-add">
+                            <svg viewBox="0 0 24 24" class="server-selector-add-icon">
+                                <path d="M12 5v14M5 12h14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Add Server</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigation</div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                                <span class="nav-dot"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#features" class="nav-link" data-section="features">
+                                <span class="nav-dot"></span>
+                                <span>Features</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support Area Section -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Support Area</div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#announcements" class="nav-link" data-section="announcements">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Announcements</span>
+                                <span class="nav-badge">2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#documentation" class="nav-link" data-section="documentation">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Documentation</span>
+                            </a>
+                        </li>
+                        <li style="display: none;">
+                            <a href="#support" class="nav-link" data-section="support">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+                                </svg>
+                                <span>Support</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Server Info at Bottom -->
+                <div class="sidebar-server-info">
+                    <div class="sidebar-divider"></div>
+                    <div class="server-info-card">
+                        <div class="server-avatar-container">
+                            <img id="sidebarServerImage" src="" alt="Server Icon" class="server-image-slim" style="display: none;">
+                            <div class="server-avatar-slim-fallback" id="sidebarServerFallback">
+                                <span id="sidebarServerInitials">SV</span>
+                            </div>
+                            <div class="server-status-indicator online"></div>
+                        </div>
+                        <div class="server-details-slim">
+                            <div class="server-name-slim" id="sidebarServerName">Loading...</div>
+                            <div class="server-members-slim" id="sidebarServerMembers">
+                                <svg viewBox="0 0 24 24" class="member-icon">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <circle cx="9" cy="7" r="4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                                <span>0 members</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="dashboard-content">
+
+            <!-- Slim Unsaved Changes Strip (hidden by default) -->
+            <div id="unsavedStrip" class="unsaved-strip" style="display:none;">
+                <div class="unsaved-strip-text">
+                    <strong>Unsaved changes</strong>
+                    <span>You have unsaved edits. Don’t forget to save.</span>
+                </div>
+                <div class="unsaved-strip-actions">
+                    <button class="btn btn-secondary btn-sm" id="unsavedDiscard">Discard</button>
+                    <button class="btn btn-success btn-sm" id="unsavedSave">Save</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h1 class="section-title">Dashboard Overview</h1>
+                    <p class="section-description">Monitor your server's security status and recent activity</p>
+                </div>
+
+                <!-- Coming Soon Message -->
+                <div class="coming-soon-container">
+                    <div class="coming-soon-icon">
+                        <svg viewBox="0 0 24 24" width="80" height="80">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="coming-soon-title">Advanced Statistics Display Coming Soon</h2>
+                    <p class="coming-soon-description">We're working on building comprehensive analytics and statistics for your server. This dashboard will include real-time security metrics, threat analysis, and detailed activity reports.</p>
+                </div>
+
+                <!-- Hidden fake stats for future use -->
+                <div style="display: none;">
+                    <!-- Status Cards -->
+                    <div class="status-grid">
+                        <div class="status-card">
+                            <div class="status-icon success">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2L3 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-9-5z" fill="currentColor"/>
+                                    <path d="M9 12l2 2 4-4" stroke="white" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="status-content">
+                                <h3 class="status-title">Security Status</h3>
+                                <p class="status-value success">Protected</p>
+                                <p class="status-description">All systems operational</p>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="status-icon info">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <circle cx="9" cy="7" r="4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="status-content">
+                                <h3 class="status-title">Active Members</h3>
+                                <p class="status-value" id="memberCount">1,247</p>
+                                <p class="status-description">+23 this week</p>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="status-icon warning">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="17" r="1" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="status-content">
+                                <h3 class="status-title">Threats Blocked</h3>
+                                <p class="status-value">47</p>
+                                <p class="status-description">Last 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="status-icon primary">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="status-content">
+                                <h3 class="status-title">Auto Actions</h3>
+                                <p class="status-value">156</p>
+                                <p class="status-description">This month</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recent Security Events</h3>
+                                <button class="btn btn-ghost btn-sm">View All</button>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon blocked">
+                                        <svg viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                            <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Spam attempt blocked</p>
+                                        <p class="activity-description">User @spammer123 attempted to send 15 messages in 2 seconds</p>
+                                        <span class="activity-time">2 minutes ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon success">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">User verified successfully</p>
+                                        <p class="activity-description">@newuser completed verification process</p>
+                                        <span class="activity-time">5 minutes ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon warning">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                            <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="17" r="1" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Suspicious link detected</p>
+                                        <p class="activity-description">Potentially malicious URL removed from #general</p>
+                                        <span class="activity-time">12 minutes ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Security Overview</h3>
+                                <div class="card-actions">
+                                    <select class="select-input">
+                                        <option>Last 7 days</option>
+                                        <option>Last 30 days</option>
+                                        <option>Last 90 days</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <div class="chart-placeholder">
+                                    <svg viewBox="0 0 400 200" class="chart-svg">
+                                        <defs>
+                                            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:0.3"/>
+                                                <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <polyline points="0,150 50,120 100,140 150,100 200,110 250,80 300,90 350,60 400,70"
+                                                  stroke="#00E5FF" stroke-width="3" fill="none"/>
+                                        <polyline points="0,200 0,150 50,120 100,140 150,100 200,110 250,80 300,90 350,60 400,70 400,200"
+                                                  fill="url(#chartGradient)"/>
+                                    </svg>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color primary"></div>
+                                        <span>Threats Blocked</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color success"></div>
+                                        <span>Clean Activity</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other sections will be added here -->
+            <section id="analytics-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Analytics</h1>
+                    <p class="section-description">Detailed insights into your server's security metrics</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Analytics Dashboard</h3>
+                    <p>Advanced analytics and reporting features coming soon...</p>
+                </div>
+            </section>
+
+            <section id="moderation-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Moderation</h1>
+                    <p class="section-description">Manage moderation settings and review actions</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Moderation Tools</h3>
+                    <p>Advanced moderation features coming soon...</p>
+                </div>
+            </section>
+
+            <section id="automod-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Auto-Moderation</h1>
+                    <p class="section-description">Configure automated moderation rules and filters</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Auto-Moderation Settings</h3>
+                    <p>Intelligent auto-moderation configuration coming soon...</p>
+                </div>
+            </section>
+
+            <section id="verification-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Verification</h1>
+                    <p class="section-description">Set up and manage user verification systems</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Verification System</h3>
+                    <p>Advanced verification features coming soon...</p>
+                </div>
+            </section>
+
+            <section id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Settings</h1>
+                    <p class="section-description">Configure general bot settings for your server</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Bot Settings</h3>
+                    <p>Comprehensive settings panel coming soon...</p>
+                </div>
+            </section>
+
+            <section id="logs-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Audit Logs</h1>
+                    <p class="section-description">Review detailed logs of all bot actions and events</p>
+                </div>
+                <div class="coming-soon">
+                    <h3>Audit Logs</h3>
+                    <p>Detailed logging and audit trail coming soon...</p>
+                </div>
+            </section>
+
+            <section id="features-section" class="content-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <h1 class="section-title" style="display:none;"></h1>
+                        <p class="section-description">Enable and configure bot features for your server</p>
+                    </div>
+
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <!-- Anti-Spam Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon anti-spam">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2L3 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-9-5z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M9 12l2 2 4-4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status enabled" id="anti-spam-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Enabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Anti-Spam Protection</h3>
+                            <p class="feature-description">Automatically detect and prevent spam messages, repeated content, and flooding attacks.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="anti-spam-toggle" checked onchange="toggleFeature('anti-spam', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="feature-config-btn" onclick="openFeatureSettings('anti-spam')" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto-Moderation Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon auto-mod">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status enabled" id="auto-mod-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Enabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Auto-Moderation</h3>
+                            <p class="feature-description">Intelligent content filtering with customizable rules for inappropriate content detection.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="auto-mod-toggle" checked onchange="toggleFeature('auto-mod', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="feature-config-btn" onclick="openFeatureSettings('auto-mod')" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Welcome Messages Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon welcome">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <circle cx="12" cy="7" r="4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status disabled" id="welcome-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Disabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Welcome Messages</h3>
+                            <p class="feature-description">Greet new members with customizable welcome messages and role assignments.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="welcome-toggle" onchange="toggleFeature('welcome', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="feature-config-btn disabled" onclick="openFeatureSettings('welcome')" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Raid Protection Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon raid-protection">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status enabled" id="raid-protection-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Enabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Raid Protection</h3>
+                            <p class="feature-description">Advanced protection against coordinated attacks and mass join events.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="raid-protection-toggle" checked onchange="toggleFeature('raid-protection', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="feature-config-btn" onclick="openFeatureSettings('raid-protection')" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Link Protection Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon link-protection">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status disabled" id="link-protection-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Disabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Link Protection</h3>
+                            <p class="feature-description">Scan and block malicious links, phishing attempts, and suspicious URLs.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="link-protection-toggle" onchange="toggleFeature('link-protection', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <button class="feature-config-btn disabled" onclick="toggleLinkProtectionConfig()" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verification System Feature -->
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon verification">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-status disabled" id="verification-status">
+                                <span class="status-indicator"></span>
+                                <span class="status-text">Disabled</span>
+                            </div>
+                        </div>
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Member Verification</h3>
+                            <p class="feature-description">Require new members to complete verification before accessing the server.</p>
+                        </div>
+                        <div class="feature-card-footer">
+                            <div class="feature-controls-bottom">
+                                <label class="feature-toggle">
+                                    <input type="checkbox" id="verification-toggle" onchange="toggleFeature('verification', this.checked)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+
+                                <button class="feature-config-btn disabled" onclick="openFeatureSettings('verification')" title="Configure">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Protection Configuration Section (Hidden by default) -->
+                <div id="link-protection-config" class="config-section" style="display: none;">
+                    <div class="config-header">
+                        <div class="config-title-group">
+                            <button class="config-back-btn" onclick="toggleLinkProtectionConfig()">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 12H5" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M12 19l-7-7 7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                                Back to Features
+                            </button>
+                            <h2 class="config-title">Link Protection Configuration</h2>
+                            <p class="config-description">Configure link scanning, whitelists, and punishment actions</p>
+                        </div>
+                    </div>
+
+                    <div class="config-content">
+                        <!-- Whitelist Domains Section -->
+                        <div class="config-group">
+                            <h3 class="config-group-title">Whitelist Domains</h3>
+                            <p class="config-group-description">Domains that are always allowed to be posted</p>
+                            <div class="input-group">
+                                <input type="text" id="domainInput" placeholder="Enter domain (e.g., discord.com)" class="config-input">
+                                <button onclick="addWhitelistDomain()" class="btn btn-primary">Add Domain</button>
+                            </div>
+                            <div id="whitelistDomains" class="tag-list"></div>
+                        </div>
+
+                        <!-- Whitelist Users Section -->
+                        <div class="config-group">
+                            <h3 class="config-group-title">Whitelist Users</h3>
+                            <p class="config-group-description">Users who can post any links</p>
+                            <div class="input-group">
+                                <input type="text" id="userInput" placeholder="User ID or @username" class="config-input">
+                                <button onclick="addWhitelistUser()" class="btn btn-primary">Add User</button>
+                            </div>
+                            <div id="whitelistUsers" class="tag-list"></div>
+                        </div>
+
+                        <!-- Whitelist Roles Section -->
+                        <div class="config-group">
+                            <h3 class="config-group-title">Whitelist Roles</h3>
+                            <p class="config-group-description">Roles that can post any links</p>
+                            <div class="input-group">
+                                <select id="roleSelect" class="config-select">
+                                    <option value="">Select a role...</option>
+                                </select>
+                                <button onclick="addWhitelistRole()" class="btn btn-primary">Add Role</button>
+                            </div>
+                            <div id="whitelistRoles" class="tag-list"></div>
+                        </div>
+
+
+
+                        <!-- Punishment Action -->
+                        <div class="config-group">
+                            <h3 class="config-group-title">Punishment Action</h3>
+                            <p class="config-group-description">What happens when a link is blocked</p>
+                            <select id="punishmentAction" class="config-select">
+                                <option value="delete">Delete Message</option>
+                                <option value="delete_warn">Delete Message + Warn User</option>
+                                <option value="timeout">Time Out User (5m)</option>
+                                <option value="kick">Kick User (Can't join for 1 hour)</option>
+                                <option value="ban">Ban User</option>
+                            </select>
+                        </div>
+
+                        <!-- Warning Message removed: DM text is now standardized in code -->
+
+                        <!-- Save Button -->
+                        <div class="config-actions">
+                            <button onclick="saveLinkProtectionConfig()" class="btn btn-success btn-large">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <polyline points="17,21 17,13 7,13 7,21" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <polyline points="7,3 7,8 15,8" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                                Save Configuration
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anti-Spam Configuration Section (Hidden by default) -->
+                <div id="anti-spam-config" class="config-section" style="display: none;">
+                    <div class="config-header">
+                        <div class="config-title-group">
+                            <button class="config-back-btn" onclick="toggleAntiSpamConfig()">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 12H5" stroke="currentColor" fill="none" stroke-width="2"/>
+                                    <path d="M12 19l-7-7 7-7" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                                Back to Features
+                            </button>
+                            <h2 class="config-title">Anti-Spam Configuration</h2>
+                            <p class="config-description">Configure message-rate limits, duplicate detection, and mention limits.</p>
+                        </div>
+                    </div>
+
+                    <div class="config-content">
+                        <div class="config-grid">
+                            <div class="config-card">
+                                <h3 class="config-card-title">Rate Limits</h3>
+                                <div class="form-row">
+                                    <label for="asMaxMessages">Max messages per 5s</label>
+                                    <input type="number" id="asMaxMessages" class="config-input" min="1" max="50" value="5" />
+                                    <small class="form-hint">Window is fixed to 5 seconds</small>
+                                </div>
+                            </div>
+
+                            <div class="config-card">
+                                <h3 class="config-card-title">Spam Heuristics</h3>
+                                <div class="form-row">
+                                    <label for="asDuplicates">Max duplicates in 30s</label>
+                                    <input type="number" id="asDuplicates" class="config-input" min="1" max="10" value="3" />
+                                </div>
+                                <div class="form-row">
+                                    <label for="asMaxMentions">Max mentions per message</label>
+                                    <input type="number" id="asMaxMentions" class="config-input" min="0" max="20" value="5" />
+                                </div>
+                                <div class="form-row">
+                                    <label for="asSameUserTagThreshold">Max tags of the same user in 5m</label>
+                                    <input type="number" id="asSameUserTagThreshold" class="config-input" min="1" max="50" value="5" />
+                                    <small class="form-hint">If exceeded, the message will be deleted and the user warned</small>
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="asPunishment">Punishment Action</label>
+                                    <select id="asPunishment" class="config-select">
+                                        <option value="delete">Delete</option>
+                                        <option value="delete_warn">Delete + Warn (DM)</option>
+                                        <option value="timeout_10m">Timeout 10m</option>
+                                        <option value="kick">Kick</option>
+                                        <option value="ban">Ban</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="config-card">
+                                <h3 class="config-card-title">Whitelists</h3>
+                                <div class="form-row">
+                                    <label for="asRoleSelect">Whitelist Roles</label>
+                                    <div class="role-input-container">
+                                        <select id="asRoleSelect" class="config-select"></select>
+                                        <button class="btn btn-secondary" onclick="addAntiSpamRole()">Add Role</button>
+                                    </div>
+                                    <div id="asRoleList" class="tag-list"></div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="asUserInput">Whitelist Users (ID only)</label>
+                                    <div class="user-input-group">
+                                        <input id="asUserInput" class="config-input" placeholder="Enter Discord User ID (17-20 digits)" />
+                                        <button class="btn btn-secondary" onclick="addAntiSpamUser()">Add User</button>
+                                    </div>
+                                    <div id="asUserList" class="tag-list"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-actions">
+                            <button class="btn btn-outline" onclick="loadAntiSpamConfig()">Discard</button>
+                            <button class="btn btn-primary" onclick="saveAntiSpamConfig()">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Announcements Section -->
+            <section id="announcements-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Announcements</h1>
+                    <p class="section-description">Latest updates and news from SecurityGuard</p>
+                </div>
+                <div class="announcements-container">
+                    <div class="announcement-card">
+                        <div class="announcement-badge new">New</div>
+                        <h3 class="announcement-title">🎉 New Feature: Advanced Anti-Raid Protection</h3>
+                        <p class="announcement-date">Posted on January 15, 2025</p>
+                        <p class="announcement-content">
+                            We're excited to announce our new Advanced Anti-Raid Protection system! This feature uses AI-powered detection to identify and block coordinated raid attempts before they can harm your server.
+                        </p>
+                    </div>
+                    <div class="announcement-card">
+                        <div class="announcement-badge update">Update</div>
+                        <h3 class="announcement-title">🔧 System Maintenance Scheduled</h3>
+                        <p class="announcement-date">Posted on January 10, 2025</p>
+                        <p class="announcement-content">
+                            We'll be performing scheduled maintenance on January 20th from 2:00 AM to 4:00 AM UTC. During this time, some features may be temporarily unavailable.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Documentation Section -->
+            <section id="documentation-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Documentation</h1>
+                    <p class="section-description">Comprehensive guides and tutorials</p>
+                </div>
+                <div class="coming-soon-container">
+                    <div class="coming-soon-icon">
+                        <svg viewBox="0 0 24 24" width="80" height="80">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h2 class="coming-soon-title">Documentation Coming Soon</h2>
+                    <p class="coming-soon-description">We're working hard to create comprehensive documentation for all features. Check back soon!</p>
+                </div>
+            </section>
+
+            <!-- Support Section -->
+            <section id="support-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Support</h1>
+                    <p class="section-description">Get help from our team and community</p>
+                </div>
+                <div class="support-grid">
+                    <div class="support-card-modern">
+                        <div class="support-card-header">
+                            <div class="support-icon-modern discord">
+                                <svg viewBox="0 0 71 55" width="40" height="40" fill="none">
+                                    <g clip-path="url(#clip0)">
+                                        <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0">
+                                            <rect width="71" height="55" fill="white"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <h3 class="support-card-title">Discord Community</h3>
+                        </div>
+                        <p class="support-card-description">Join our Discord server for instant help from our community and support team</p>
+                        <div class="support-stats-modern">
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">5,000+</span>
+                                <span class="stat-label-modern">Members</span>
+                            </div>
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">&lt;5min</span>
+                                <span class="stat-label-modern">Avg Response</span>
+                            </div>
+                        </div>
+                        <a href="https://discord.gg/your-invite" target="_blank" class="btn btn-primary btn-block">
+                            <svg viewBox="0 0 24 24" width="18" height="18" style="margin-right: 8px;">
+                                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Join Discord
+                        </a>
+                    </div>
+
+                    <div class="support-card-modern">
+                        <div class="support-card-header">
+                            <div class="support-icon-modern email">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="support-card-title">Email Support</h3>
+                        </div>
+                        <p class="support-card-description">Send us an email and we'll get back to you within 24 hours</p>
+                        <div class="support-stats-modern">
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">&lt;24h</span>
+                                <span class="stat-label-modern">Response Time</span>
+                            </div>
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">24/7</span>
+                                <span class="stat-label-modern">Available</span>
+                            </div>
+                        </div>
+                        <a href="mailto:support@securityguard.com" class="btn btn-outline btn-block">
+                            <svg viewBox="0 0 24 24" width="18" height="18" style="margin-right: 8px;">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Send Email
+                        </a>
+                    </div>
+
+                    <div class="support-card-modern">
+                        <div class="support-card-header">
+                            <div class="support-icon-modern docs">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none">
+                                    <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="support-card-title">Documentation</h3>
+                        </div>
+                        <p class="support-card-description">Browse our comprehensive documentation and guides</p>
+                        <div class="support-stats-modern">
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">100+</span>
+                                <span class="stat-label-modern">Articles</span>
+                            </div>
+                            <div class="stat-modern">
+                                <span class="stat-value-modern">50+</span>
+                                <span class="stat-label-modern">Guides</span>
+                            </div>
+                        </div>
+                        <a href="#documentation" class="btn btn-outline btn-block nav-link" data-section="documentation">
+                            <svg viewBox="0 0 24 24" width="18" height="18" style="margin-right: 8px;">
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            View Docs
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+
+
+
+    <script src="/config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- Disable Verification Confirmation Modal -->
+<div id="disableVerificationModal" class="modal confirmation-modal">
+  <div class="modal-content confirmation-content">
+    <div class="modal-header confirmation-header">
+      <div class="warning-icon">
+        <svg viewBox="0 0 24 24" class="warning-svg">
+          <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke="currentColor" fill="none" stroke-width="2"/>
+        </svg>
+      </div>
+      <h2 class="confirmation-title">Disable Verification System</h2>
+      <button class="modal-close" onclick="closeDisableVerificationModal()">×</button>
+    </div>
+    <div class="modal-body confirmation-body">
+      <div class="warning-message">
+        <p class="primary-warning">This will permanently disable verification and delete all related components.</p>
+
+        <div class="cleanup-summary">
+          <p><strong>What will be removed:</strong> Verification message, "Unverified" role, and all settings.</p>
+        </div>
+
+        <div class="confirmation-question">
+          <p>Are you sure you want to disable verification?</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer confirmation-footer">
+      <button class="btn btn-outline" onclick="closeDisableVerificationModal()">
+        <svg viewBox="0 0 24 24" class="btn-icon">
+          <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2"/>
+        </svg>
+        Cancel
+      </button>
+      <button class="btn btn-danger" onclick="confirmDisableVerification()" id="confirmDisableBtn">
+        <svg viewBox="0 0 24 24" class="btn-icon">
+          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke="currentColor" fill="none" stroke-width="2"/>
+        </svg>
+        Yes, Disable & Delete All
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Verification Modal -->
+<div id="verificationModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Enable Member Verification</h2>
+      <button class="modal-close" onclick="closeVerificationModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <label for="verifSystemSelect">Verification System</label>
+        <select id="verifSystemSelect" class="config-select">
+          <option value="simple" selected>Simple Verification</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="verifMemberRoleId">Member Role ID (to grant after verify)</label>
+        <input id="verifMemberRoleId" class="config-input" placeholder="Enter Role ID (17-20 digits)" />
+        <small class="form-hint">This role will be given after the user verifies</small>
+      </div>
+      <div class="form-row">
+        <div class="auto-channel-info">
+          <h4>✅ Verification Channel</h4>
+          <p>A dedicated verification channel will be created automatically. Only users with the "Unverified" role will be able to see it.</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="important-notice">
+          <h4>⚠️ Important Notice</h4>
+          <p><strong>DO NOT DELETE</strong> the verification channel, "Unverified" role, or any staff roles associated with this system. Deleting these will cause <strong>automatic termination</strong> of the verification system and <strong>data loss</strong>.</p>
+          <p>You can safely <strong>rename</strong> or <strong>move</strong> the verification channel after setup, but never delete it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeVerificationModal()">Cancel</button>
+      <button id="verifSaveBtn" class="btn btn-primary" onclick="saveVerificationConfig()">Save & Set Up</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "name": "security-discord-bot-project",
+  "version": "1.0.0",
+  "description": "Complete Discord security bot project with professional landing page",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:bot\" \"npm run start:api\" \"npm run start:web\"",
+    "start:web": "lite-server -c bs-config.json",
+    "start:bot": "cd SecurityBot && npm start",
+    "start:api": "cd api && npm start",
+    "start:bot-only": "cd SecurityBot && npm start",
+    "start:web-only": "lite-server -c bs-config.json",
+    "install:all": "npm install && cd SecurityBot && npm install && cd ../api && npm install",
+    "deploy:bot": "cd SecurityBot && npm run deploy",
+    "setup:db": "node setup-database.js",
+    "quick-start": "node quick-start.js",
+    "dev": "lite-server -c bs-config.json",
+    "build": "echo \"Build process for production deployment\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "security",
+    "bot",
+    "landing-page",
+    "professional"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
