@@ -231,7 +231,8 @@ else
 fi
 
 print_info "Configuring firewall..."
-ufw allow 'Nginx Full'
+ufw allow 80/tcp
+ufw allow 443/tcp
 ufw allow OpenSSH
 ufw --force enable
 
